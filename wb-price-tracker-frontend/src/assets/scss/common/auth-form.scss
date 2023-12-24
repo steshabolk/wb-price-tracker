@@ -1,0 +1,97 @@
+$auth-form-size-max: 40vw;
+$auth-form-size-mid: 40vw;
+$auth-form-size-col: 80vw;
+$auth-field-size-max: calc($auth-form-size-max * 0.5);
+$auth-field-size-mid: calc($auth-form-size-mid * 0.7);
+$auth-field-size-col: calc($auth-form-size-col * 0.5);
+
+.auth-wrapper {
+	width: $auth-form-size-mid;
+	.inline-btn-wrapper {
+		margin: 0 auto;
+		width: 90%;
+	}
+
+	@include min-screen($maxDesktopWidth) {
+		width: $auth-form-size-max;
+		.auth-input-wrapper {
+			width: $auth-field-size-max;
+		}
+	}
+	@include max-screen($tabletWidth) {
+		width: $auth-form-size-col;
+		.auth-form-wrapper {
+			margin-bottom: 1.5rem;
+		}
+		.auth-input-wrapper {
+			width: $auth-field-size-col;
+		}
+		.request-fail {
+			max-width: $auth-form-size-col * 0.85;
+		}
+		.inline-btn-wrapper {
+			width: 80%;
+		}
+	}
+
+	&__light {
+		.main-input-text {
+			border-bottom-color: rgba($mainFontColorLight, 0.5);
+			&__active {
+				border-bottom-color: rgba($mainFontColorLight, 0.9);
+			}
+			.svg-icon {
+				color: $mainFontColorLight;
+			}
+			input {
+				color: $mainFontColorLight;
+				&::placeholder {
+					color: rgba($mainFontColorLight, 0.8);
+				}
+			}
+		}
+		.input-field-error {
+			.main-input-text {
+				input {
+					color: rgba($mainFontColorLight, 0.5);
+				}
+			}
+		}
+		.main-error-message,
+		.main-success-message {
+			background-color: rgba($mainFontColorLight, 0.3);
+			border-left-color: rgba($mainFontColorLight, 0.3);
+			color: $mainFontColorLight;
+		}
+		.form-error-msg {
+			color: $mainFontColorLight;
+		}
+		.main-btn,
+		.btn-list {
+			color: $mainFontColorLight;
+			border-color: $mainFontColorLight;
+		}
+		.btn-list-active {
+			background-color: rgba($mainFontColorLight, 0.3);
+		}
+		.loader-line {
+			&::before {
+				background-color: $mainFontColorLight;
+			}
+			&::after {
+				background-color: $purple-gradient-to;
+			}
+		}
+	}
+}
+
+// FORM
+.auth-form-wrapper {
+	margin-top: 1rem;
+}
+
+// INPUT
+.auth-input-wrapper {
+	width: $auth-field-size-mid;
+	margin: 0.3rem auto;
+}

@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: api
+    build: ./wb-price-tracker-api
+    restart: always
+    ports:
+      - "8085:8085"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/wb-price-tracker-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      APP_FRONTEND_URL: http://localhost:8088
+    networks:
+      - backend
+
+  frontend:
+    container_name: frontend
+    build: ./wb-price-tracker-frontend
+    restart: always
+    ports:
+      - "8088:8088"
+    depends_on:
+      - api
+    networks:
+      - backend
+
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: wb-price-tracker-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  liquibase-migrations:
+    image: liquibase/liquibase:4.25
+    depends_on:
+      - postgres
+    command:
+      - --changelog-file=master.yaml
+      - --driver=org.postgresql.Driver
+      - --url=jdbc:postgresql://postgres:5432/wb-price-tracker-db
+      - --username=postgres
+      - --password=postgres
+      - update
+    volumes:
+      - ./migrations:/liquibase/changelog
+    networks:
+      - backend
+
+volumes:
+  postgres: { }
+
+networks:
+  backend: { }

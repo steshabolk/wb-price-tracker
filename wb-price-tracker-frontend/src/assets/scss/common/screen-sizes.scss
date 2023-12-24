@@ -1,0 +1,52 @@
+@mixin max-screen($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+@mixin min-screen($width) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin screen-between($min-width, $max-width) {
+	@media screen and (min-width: $min-width) and (max-width: $max-width) {
+		@content;
+	}
+}
+
+@mixin lgDesktop() {
+	@media screen and (min-width: $desktopWidth) {
+		@content;
+	}
+}
+
+@mixin desktop() {
+	@media screen and (min-width: $smDesktopWidth) and (max-width: $desktopWidth) {
+		@content;
+	}
+}
+
+@mixin smDesktop() {
+	@media screen and (min-width: $tabletWidth) and (max-width: $smDesktopWidth) {
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@media screen and (min-width: $smTabletWidth) and (max-width: $tabletWidth) {
+		@content;
+	}
+}
+
+@mixin smTablet() {
+	@media screen and (min-width: $phoneWidth) and (max-width: $smTabletWidth) {
+		@content;
+	}
+}
+
+@mixin phone() {
+	@media screen and (max-width: $phoneWidth) {
+		@content;
+	}
+}

@@ -1,0 +1,57 @@
+{
+    "state": 0,
+    "params": {
+        "version": 1,
+        "curr": "rub",
+        "payloadVersion": 1
+    },
+    "data": {
+        "products": [
+            {
+                "id": 65984481,
+                "root": 50066126,
+                "kindId": 0,
+                "brand": "4195",
+                "brandId": 42624,
+                "siteBrandId": 52624,
+                "colors": [
+                    {
+                        "name": "черный",
+                        "id": 0
+                    }
+                ],
+                "subjectId": 1357,
+                "subjectParentId": 6238,
+                "name": "Чехол для MacBook Pro 14 A2442 M1 A2779 M2 М3 Макбук Про 14",
+                "supplier": "4195 SHOP",
+                "supplierId": 40273,
+                "supplierRating": 4.8,
+                "supplierFlags": 0,
+                "priceU": 490000,
+                "salePriceU": 130300,
+                "logisticsCost": 0,
+                "sale": 73,
+                "returnCost": 0,
+                "diffPrice": false,
+                "saleConditions": 896,
+                "pics": 6,
+                "rating": 5,
+                "reviewRating": 4.7,
+                "feedbacks": 264,
+                "volume": 14,
+                "viewFlags": 0,
+                "promotions": [62705, 63484],
+                "sizes": [
+                    {
+                        "name": "",
+                        "origName": "0",
+                        "rank": 0,
+                        "optionId": 114896474,
+                        "returnCost": 0,
+                        "stocks": []
+                    }
+                ]
+            }
+        ]
+    }
+}

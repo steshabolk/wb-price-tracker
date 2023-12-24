@@ -1,0 +1,199 @@
+// MAIN FLEX
+@mixin flex($flex-direction: false, $flex-wrap: false, $justify-content: false, $align-items: false, $align-content: false, $text-align: false) {
+	display: flex;
+	@if $flex-direction != false {
+		flex-direction: $flex-direction;
+	}
+	@if $flex-wrap != false {
+		flex-wrap: $flex-wrap;
+	}
+	@if $justify-content != false {
+		justify-content: $justify-content;
+	}
+	@if $align-items != false {
+		align-items: $align-items;
+	}
+	@if $align-content != false {
+		align-content: $align-content;
+	}
+	@if $text-align != false {
+		text-align: $text-align;
+	}
+}
+
+// TRANSITION
+@mixin main-transition($property: all, $duration: 0.4s, $ease: ease-in-out) {
+	transition: $property $duration $ease;
+}
+
+// TEXT
+@mixin letter-spacing($spacing, $margin-left: calc($spacing / 2)) {
+	letter-spacing: $spacing;
+	padding-left: $margin-left;
+}
+
+// SVG ICON
+.svg-icon {
+	width: 100%;
+	height: 100%;
+	min-width: 1rem;
+	min-height: 1rem;
+	max-width: 2.5rem;
+	max-height: 2.5rem;
+	display: block;
+	fill: currentColor;
+	color: $gray-65;
+	&__disable {
+		color: rgba($gray-65, 0.4);
+		cursor: default !important;
+		&:hover {
+			color: rgba($gray-65, 0.4) !important;
+		}
+	}
+}
+
+// LINES
+$lineWidthMin: 50%;
+$lineWidthMax: 70%;
+@mixin horizontal-line-highlight($color: $highlight) {
+	margin: 0.5rem auto;
+	height: 0.2rem;
+	width: $lineWidthMin;
+	background: linear-gradient(to right, rgba($color, 0) 0%, rgba($color, 1) 50%, rgba($color, 0) 100%);
+}
+@mixin horizontal-line-animation() {
+	width: $lineWidthMax;
+	animation: changeLine 0.6s 1 linear;
+	-webkit-animation: changeLine 0.6s 1 linear;
+	-moz-animation: changeLine 0.6s 1 linear;
+	-o-animation: changeLine 0.6s 1 linear;
+	-ms-animation: changeLine 0.6s 1 linear;
+}
+@keyframes changeLine {
+	0% {
+		width: $lineWidthMin;
+	}
+	100% {
+		width: $lineWidthMax;
+	}
+}
+@-webkit-keyframes changeLine {
+	0% {
+		width: $lineWidthMin;
+	}
+	100% {
+		width: $lineWidthMax;
+	}
+}
+@-moz-keyframes changeLine {
+	0% {
+		width: $lineWidthMin;
+	}
+	100% {
+		width: $lineWidthMax;
+	}
+}
+@-o-keyframes changeLine {
+	0% {
+		width: $lineWidthMin;
+	}
+	100% {
+		width: $lineWidthMax;
+	}
+}
+@-ms-keyframes changeLine {
+	0% {
+		width: $lineWidthMin;
+	}
+	100% {
+		width: $lineWidthMax;
+	}
+}
+
+.horizontal-line {
+	height: 0.08rem;
+	width: 100%;
+	margin: 0.8rem auto;
+	background-color: rgba($gray-65, 0.4);
+}
+.vertical-line {
+	@include main-transition();
+	height: auto;
+	width: 0.3rem;
+	background-color: rgba($gray-65, 0.2);
+}
+
+// BORDERS
+@mixin main-box-shadow($color, $alpha) {
+	// box-shadow: 0rem 0.1rem 0.2rem 0rem rgba($color, $alpha), 0.1rem 0.2rem 0.4rem 0rem rgba($color, $alpha),
+	// 	0.2rem 0.4rem 0.8rem 0rem rgba($color, $alpha), 0.2rem 0.4rem 1.6rem 0rem rgba($color, $alpha);
+	box-shadow: 0rem 0.08rem 0.16rem 0rem rgba($color, $alpha), 0.08rem 0.16rem 0.32rem 0rem rgba($color, $alpha),
+		0.16rem 0.32rem 0.64rem 0rem rgba($color, $alpha), 0.16rem 0.32rem 1.28rem 0rem rgba($color, $alpha);
+}
+@mixin main-border($color) {
+	// box-shadow: 0rem 0rem 0rem 0.2rem rgba($color, 0.5), 0rem 0.2rem 0.4rem rgba($color, 0.1), 0rem 0.4rem 0.8rem rgba($color, 0.1),
+	// 	0rem 0.8rem 1.6rem rgba($color, 0.1);
+	box-shadow: 0rem 0rem 0rem 0.1rem rgba($color, 0.5), 0rem 0.1rem 0.2rem rgba($color, 0.1), 0rem 0.3rem 0.6rem rgba($color, 0.1),
+		0rem 0.4rem 0.8rem rgba($color, 0.1);
+}
+
+// EFFECTS
+.hover-zoom {
+	@include main-transition();
+	&:hover {
+		z-index: 99;
+		transform: scale(1.05);
+	}
+}
+.filter-bw {
+	img {
+		@include main-transition(filter);
+		filter: grayscale(100%);
+		&:hover {
+			filter: brightness(70%);
+		}
+	}
+}
+@mixin filter-darken {
+	filter: brightness(70%);
+}
+
+// SHIFT
+@mixin shift-element($top: auto, $right: auto, $bottom: auto, $left: auto) {
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin shift-background($top: auto, $right: auto, $bottom: auto, $left: auto, $width: 0rem, $height: 0rem) {
+	&:after {
+		background-color: rgba($gray-65, 0.1);
+		@include shift-element($top, $right, $bottom, $left);
+		content: '';
+		position: absolute;
+		width: calc(100% - $width);
+		height: calc(100% - $height);
+		z-index: -1;
+	}
+}
+
+// MESSAGES
+@mixin main-message($main-color, $light-color) {
+	background-color: $light-color;
+	color: $gray-65;
+	font-style: italic;
+	margin-top: 1.5rem;
+	padding: 0 0.5rem;
+	text-align: left;
+}
+.main-error-message {
+	@include main-message($error-main, $error-light);
+}
+
+.error-message_closeable {
+	@include flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: space-between, $align-items: center, $text-align: center);
+	.svg-icon {
+		width: 1.3rem;
+	}
+}

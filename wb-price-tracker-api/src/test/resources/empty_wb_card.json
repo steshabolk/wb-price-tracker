@@ -1,0 +1,11 @@
+{
+    "state": 0,
+    "params": {
+        "version": 1,
+        "curr": "rub",
+        "payloadVersion": 1
+    },
+    "data": {
+        "products": []
+    }
+}

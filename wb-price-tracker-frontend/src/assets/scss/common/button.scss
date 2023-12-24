@@ -1,0 +1,119 @@
+@mixin main-btn() {
+	@include main-transition($duration: 0.2s);
+	display: block;
+	padding: 0.2rem;
+	margin: 0.3rem auto;
+	border: 0.1rem solid rgba($gray-65, 0.3);
+	border-radius: 0.5rem;
+	color: $gray-65;
+	font-family: $headerFont;
+}
+
+.main-btn {
+	@include main-btn();
+}
+.btn-disable {
+	cursor: default;
+	opacity: 0.6;
+	.close-btn {
+		cursor: default;
+	}
+}
+.btn-active {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.btn-click-transform {
+	@include main-transition($duration: 0.1s);
+	&:active {
+		@include main-transition($duration: 0.1s);
+		transform: scale(0.85);
+	}
+}
+.btn-shit-right-transform {
+	@include main-transition($duration: 0.2s);
+	&:active {
+		@include main-transition($duration: 0.2s);
+		transform: translateX(0.1rem);
+	}
+}
+.btn-rotate-right-transform {
+	@include main-transition($duration: 0.3s);
+	&:active {
+		@include main-transition($duration: 0.3s);
+		transform: rotateZ(25deg);
+	}
+}
+
+.btn-list-wrapper {
+	@include flex($flex-wrap: wrap, $justify-content: center, $align-items: center, $text-align: center);
+	li {
+		margin-right: 0.5rem;
+		&:last-child {
+			margin-right: 0;
+		}
+		.svg-icon {
+			color: $gray-65;
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+}
+.btn-list {
+	cursor: pointer;
+	@include main-btn();
+	margin: 0.2rem 0;
+}
+.btn-list-active {
+	cursor: default;
+	background-color: rgba($highlight, 0.1);
+}
+
+.close-btn {
+	cursor: pointer;
+	transform: rotate(45deg);
+	&:active {
+		@include main-transition($duration: 0.1s);
+		transform: rotate(45deg) scale(0.85);
+	}
+}
+
+.inline-btn-wrapper {
+	@include flex($flex-wrap: nowrap, $justify-content: center, $align-items: center, $text-align: center);
+	width: 100%;
+	.main-btn {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.btn-list {
+		margin: 0;
+	}
+}
+.inline-btn-left {
+	width: 40%;
+	border-radius: 0.5rem 0 0 0.5rem;
+}
+.inline-btn-right {
+	width: 40%;
+	border-radius: 0 0.5rem 0.5rem 0;
+	border-left: 0;
+}
+
+.btn-block-wrapper {
+	@include flex($flex-wrap: nowrap);
+	margin: auto;
+	.svg-icon {
+		width: 1rem;
+		height: 1rem;
+	}
+	&-col {
+		flex-direction: column;
+		.main-btn {
+			margin: 0 0 0.3rem;
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+}

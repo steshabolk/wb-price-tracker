@@ -1,0 +1,51 @@
+// Font
+$mainFont: 'MontserratRegular', Helvetica, Arial, sans-serif;
+$headerFont: 'GothamBold', Helvetica, Arial, sans-serif;
+
+// Main Font
+$mainFontColor: #373737;
+$mainFontColorLight: #f5d3ef;
+// $mainFontSize: 1.5vw;
+$mainFontWeight: 400;
+$mainLineHeight: 1.5;
+
+// Screen Size
+$maxDesktopWidth: 1900px;
+$lgDesktopWidth: 1400px;
+$desktopWidth: 1280px;
+$smDesktopWidth: 1024px;
+$tabletWidth: 768px;
+$smTabletWidth: 640px;
+$phoneWidth: 480px;
+$smPhoneWidth: 320px;
+
+// Sections Height
+$headerHeight: 0vh;
+$footerHeight: 0vh;
+$contentHeight: calc(100vh - $headerHeight - $footerHeight);
+$accountPersonalInfoHeight: 16vh;
+$accountMainContainerWidth: 95vw;
+
+// Gray palette
+$gray-85: #262323;
+$gray-80: #373737;
+$gray-65: #595959;
+$gray-8: #eaeaea;
+$gray-5: #f3f3f3;
+$gray-2: #fafafa;
+
+// Purple palette
+$purple-40: #981d97;
+$purple-6: #efb7e5;
+$purple-1: #fdf7fc;
+$purple-gradient-from: #cb11ab;
+$purple-gradient-to: #481173;
+
+// Highlight Color
+$highlight: #efb7e5;
+$error-main: #efb7e5;
+$error-light: #efb7e57e;
+
+.main-background {
+	background: linear-gradient(235deg, $purple-gradient-from 0, $purple-gradient-to 100%) no-repeat;
+}

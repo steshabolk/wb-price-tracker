@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: wb-price-tracker
+  main:
+    banner-mode: off
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/wb-price-tracker-db
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+        ddl-auto: none
+    generate-ddl: false
+  liquibase:
+    enabled: false
+  messages:
+    basename: messages
+    encoding: UTF-8
+
+server:
+  port: 8085
+
+app:
+  schedulers:
+    enable: true
+    thread-pool-size: 10
+    product-update-time-hours: 2
+    product-update-batch: 50
+    product-remove-batch: 100
+  frontend:
+    url: http://localhost:8088
+  wb-client:
+    api: https://card.wb.ru/cards/detail?locale=ru&curr=rub&nm=
+  jwt:
+    header: X-Access-Token
+    secret: GPs4nglSC5wJFlv8OuBp7HN67S9JDIbm
+    ttl-hours: 24
+
+logging:
+  config: classpath:logback.xml
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    tags-sorter: alpha
+    operations-sorter: method
+  show-actuator: false

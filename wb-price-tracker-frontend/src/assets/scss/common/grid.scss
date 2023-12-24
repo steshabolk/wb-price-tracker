@@ -1,0 +1,74 @@
+$gridGap: 1rem;
+
+// RESPONSIVE GRID
+.grid {
+	@include flex($flex-direction: row, $justify-content: center);
+	gap: $gridGap;
+
+	&.grid-no-gap {
+		gap: 0;
+	}
+}
+
+.grid-column {
+	@include flex($flex-direction: column);
+	gap: $gridGap;
+}
+.grid-cell {
+	position: relative;
+	img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+}
+
+@include max-screen($tabletWidth) {
+	.grid {
+		flex-direction: column;
+	}
+	.grid-column-hide {
+		display: none;
+	}
+}
+
+// GRID TABLE
+:root {
+	--tb-col-num: auto-fill;
+}
+$grid-tb-border: 0.04rem;
+.grid-tb-title {
+	color: $purple-1;
+	font-family: $headerFont;
+	text-transform: uppercase;
+	background-color: rgba($purple-gradient-from, 0.4);
+}
+
+.grid-tb {
+	border: $grid-tb-border solid rgba($highlight, 0.5);
+	display: grid;
+	grid-template-columns: repeat(var(--tb-col-num), auto);
+	text-align: center;
+	margin: 0.5rem auto;
+	font-size: 0.7rem;
+}
+.grid-tb__color-even {
+	.grid-tb-row:nth-of-type(even) .grid-tb-cell {
+		background-color: rgba($highlight, 0.2);
+	}
+}
+.grid-tb__color-odd {
+	.grid-tb-row:nth-of-type(odd) .grid-tb-cell {
+		background-color: rgba($highlight, 0.2);
+	}
+}
+
+.grid-tb-row {
+	display: contents;
+}
+
+.grid-tb-cell {
+	@include flex($justify-content: center, $align-items: center);
+	border: $grid-tb-border solid rgba($highlight, 0.5);
+	padding: 0.5rem 0.2rem;
+}

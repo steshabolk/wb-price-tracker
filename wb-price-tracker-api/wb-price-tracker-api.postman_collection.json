@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "52553465-a5fb-431a-b91e-76fcce4f596e",
+		"name": "wb-price-tracker-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21742599"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user\",\r\n    \"password\":\"Password0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Anna_K\",\r\n    \"password\":\"Password0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "user-products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{product_api}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{product_api}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product-price-list-by-search-params",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/{{product_api}}/{{wb_code}}?date_from=yyyy-MM-ddTHH:mm:ssZ&date_to=yyyy-MM-ddTHH:mm:ssZ&limit=num",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{product_api}}",
+								"{{wb_code}}"
+							],
+							"query": [
+								{
+									"key": "date_from",
+									"value": "yyyy-MM-ddTHH:mm:ssZ",
+									"description": "Pattern: yyyy-MM-ddTHH:mm:ssZ"
+								},
+								{
+									"key": "date_to",
+									"value": "yyyy-MM-ddTHH:mm:ssZ",
+									"description": "Pattern: yyyy-MM-ddTHH:mm:ssZ"
+								},
+								{
+									"key": "limit",
+									"value": "num",
+									"description": "Limit last prices"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-product-to-account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": 42212619\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{product_api}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{product_api}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-product-from-account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": 42212619\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{product_api}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{product_api}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "wb-request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://card.wb.ru/cards/detail?locale=ru&curr=rub&nm={{wb_code}}",
+					"protocol": "https",
+					"host": [
+						"card",
+						"wb",
+						"ru"
+					],
+					"path": [
+						"cards",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "ru"
+						},
+						{
+							"key": "curr",
+							"value": "rub"
+						},
+						{
+							"key": "nm",
+							"value": "{{wb_code}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "token",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost:8085",
+			"type": "string"
+		},
+		{
+			"key": "product_api",
+			"value": "products",
+			"type": "string"
+		},
+		{
+			"key": "wb_code",
+			"value": "code",
+			"type": "string"
+		}
+	]
+}

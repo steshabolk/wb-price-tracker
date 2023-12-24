@@ -1,0 +1,93 @@
+@import 'utils/vars';
+@import './common/_common';
+@import 'utils/reset';
+
+html {
+	// user-select: none;
+	// -webkit-user-select: none;
+	scroll-behavior: smooth;
+	height: 100%;
+	@include min-screen($maxDesktopWidth) {
+		font-size: 1.5vw;
+	}
+	@include max-screen($maxDesktopWidth) {
+		font-size: 26px;
+	}
+	@include max-screen($lgDesktopWidth) {
+		font-size: 24px;
+	}
+	@include max-screen($desktopWidth) {
+		font-size: 22px;
+	}
+	@include max-screen($smDesktopWidth) {
+		font-size: 18px;
+	}
+	@include max-screen($tabletWidth) {
+		font-size: 18px;
+	}
+	@include max-screen($smTabletWidth) {
+		font-size: 16px;
+	}
+	@include max-screen($phoneWidth) {
+		font-size: 3vw;
+	}
+}
+
+body {
+	font-family: $mainFont;
+	line-height: $mainLineHeight;
+	font-weight: $mainFontWeight;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	background-color: $gray-2;
+	color: $mainFontColor;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+input {
+	background: transparent;
+	font-size: 1rem;
+	font-family: $mainFont;
+}
+
+button {
+	cursor: pointer;
+	color: $gray-80;
+	background-color: transparent;
+	font-size: 1rem;
+}
+
+a {
+	cursor: pointer;
+	color: $mainFontColor;
+}
+
+footer,
+section {
+	position: relative;
+}
+
+.wrapper {
+	@include flex($flex-direction: column);
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+.wrapper-content {
+	@include flex($flex-direction: column);
+	min-height: $contentHeight;
+}
+
+.container {
+	position: relative;
+	flex: 0 0 auto;
+	margin: 0 auto;
+	width: 100%;
+}
