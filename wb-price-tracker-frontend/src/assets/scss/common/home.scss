@@ -1,0 +1,33 @@
+$page-left-width: 40vw;
+$page-right-width: calc(100vw - $page-left-width);
+$page-width-col: 100vw;
+
+.home {
+	&__left {
+		min-height: $contentHeight;
+		width: $page-left-width;
+		align-items: center;
+		.auth-wrapper {
+			margin-top: 7rem;
+		}
+	}
+	&__right {
+		@include flex($justify-content: center, $align-items: center, $text-align: center);
+		width: $page-right-width;
+		min-height: $contentHeight;
+		padding: 1.5rem;
+	}
+	@include max-screen($tabletWidth) {
+		&__left {
+			width: $page-width-col;
+			min-height: 100%;
+			.auth-wrapper {
+				margin-top: 2rem;
+			}
+		}
+		&__right {
+			width: $page-width-col;
+			min-height: 100%;
+		}
+	}
+}

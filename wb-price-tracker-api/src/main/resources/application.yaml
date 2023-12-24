@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: api-service
+  main:
+    banner-mode: off
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/wb-price-tracker-db
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+        ddl-auto: none
+    generate-ddl: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  messages:
+    basename: messages
+    encoding: UTF-8
+  kafka:
+    bootstrap-servers: localhost:29092
+
+kafka:
+  enabled: true
+  topics:
+    price-update:
+      name: price-update
+      partitions: 1
+      replicas: 1
+    product-details-update:
+      name: product-details-update
+      partitions: 1
+      replicas: 1
+
+schedulers:
+  enabled: true
+
+server:
+  port: 8085
+
+frontend:
+  url: http://localhost:8088
+
+jwt:
+  secret: GPs4nglSC5wJFlv8OuBp7HN67S9JDIbm
+  ttl: 1440
+
+wb:
+  url: https://card.wb.ru/cards/detail?locale=ru&curr=rub&nm=
+jsonpath:
+  data: $.data.products[*]
+  brand: $.data.products[0].brand
+  name: $.data.products[0].name
+  price: $.data.products[0].salePriceU
+
+logging:
+  config: classpath:logback.xml
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    tags-sorter: alpha
+    operations-sorter: method
+  show-actuator: false

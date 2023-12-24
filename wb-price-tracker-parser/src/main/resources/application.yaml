@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: parser-service
+  main:
+    banner-mode: off
+  kafka:
+    bootstrap-servers: localhost:29092
+
+kafka:
+  enabled: true
+  topics:
+    price-update:
+      name: price-update
+      partitions: 1
+      replicas: 1
+    product-details-update:
+      name: product-details-update
+      partitions: 1
+      replicas: 1
+
+schedulers:
+  enabled: true
+
+server:
+  port: 8086
+
+api:
+  host: localhost
+  port: 8085
+  path: api/v1/parser
+  url: http://${api.host}:${api.port}/${api.path}
+
+wb:
+  url: https://card.wb.ru/cards/detail?locale=ru&curr=rub&nm=
+
+jsonpath:
+  data: $.data.products[*]
+  brand: $.data.products[0].brand
+  name: $.data.products[0].name
+  price: $.data.products[0].salePriceU
+
+logging:
+  config: classpath:logback.xml
+
+executor:
+  corePoolSize: 10
+  maxPoolSize: 20
+  queueCapacity: 1000

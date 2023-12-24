@@ -1,0 +1,179 @@
+.main-form-wrapper {
+	@include flex($flex-direction: column, $justify-content: center, $align-items: center, $text-align: center);
+	margin: 0 auto;
+}
+
+// ERRORS
+.main-input-wrapper {
+	@include flex($flex-direction: column, $text-align: left);
+	.main-btn {
+		width: 80%;
+	}
+	&.input-field-error {
+		.main-input-text {
+			// border-bottom: 0.1rem solid $error-main;
+			input {
+				color: $error-main;
+			}
+		}
+	}
+}
+.form-error-block {
+	height: 1rem;
+	.form-error-msg {
+		&:not(:first-of-type) {
+			display: none;
+		}
+	}
+}
+.form-error-msg {
+	color: rgba($gray-65, 0.6);
+	font-size: 0.7rem;
+	line-height: 1.1;
+	margin-top: 0.3rem;
+	padding-left: 0.2rem;
+	font-style: italic;
+}
+.request-fail {
+	width: 100%;
+	font-size: 0.9rem;
+	text-align: left;
+}
+
+// INPUT TEXT
+.main-input-text {
+	@include flex($align-items: center);
+	border-bottom: 0.08rem solid rgba($gray-65, 0.4);
+	&__active {
+		border-bottom: 0.08rem solid $gray-65;
+	}
+	.svg-icon {
+		padding-bottom: 0.2rem;
+		margin-right: 0.5rem;
+		color: rgba($gray-65, 0.8);
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+	input {
+		width: 100%;
+		@include main-transition($duration: 0.2s);
+		color: $gray-65;
+		// font-size: 0.9rem;
+		&::placeholder {
+			font-size: 0.9rem;
+			font-style: italic;
+			color: rgba($gray-65, 0.4);
+		}
+		&:disabled {
+			background-color: rgba($gray-65, 0.05);
+		}
+	}
+}
+
+// BORDERED FIELD
+.main-bordered-input {
+	@include flex($align-items: center);
+	border: 0.08rem solid rgba($gray-65, 0.4);
+	padding: 0.3rem 0.3rem;
+	&__active {
+		border: 0.08rem solid $gray-65;
+	}
+	input {
+		width: 100%;
+		@include main-transition($duration: 0.2s);
+		color: $gray-65;
+		font-style: italic;
+		font-size: 0.8rem;
+		&::placeholder {
+			font-style: italic;
+			font-size: 0.7rem;
+			color: rgba($gray-65, 0.4);
+		}
+	}
+	&__label {
+		width: fit-content;
+		display: block;
+		position: relative;
+		top: 0.2rem;
+		background-color: $gray-2;
+		color: rgba($gray-65, 0.4);
+		margin: 0 0.3rem;
+		padding: 0 0.3rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 0.6rem;
+		line-height: 0.3rem;
+		&__active {
+			color: $gray-65;
+		}
+	}
+	.svg-icon {
+		width: 1.5rem;
+	}
+}
+
+// // CHECKBOX
+// $input-check-size: 0.8rem;
+// $input-checked-size: calc($input-check-size * 0.7);
+// $input-check-diff: calc(($input-check-size - $input-checked-size) / 2);
+// .main-input-check {
+// 	@include flex($align-items: center);
+// 	input {
+// 		position: absolute;
+// 		z-index: -1;
+// 		opacity: 0;
+// 		width: $input-check-size;
+// 		height: $input-check-size;
+// 		&:checked ~ .input-checked__square label:after {
+// 			@include main-transition($property: background, $duration: 0.1s);
+// 			background-color: rgba($gray-65, 0.3);
+// 			border-radius: 0.15rem;
+// 			width: $input-checked-size;
+// 			height: $input-checked-size;
+// 			// top: $input-check-diff;
+// 			left: $input-check-diff;
+// 		}
+// 	}
+// 	input:disabled {
+// 		~ .input-checked__square label {
+// 			cursor: default;
+// 			&:before {
+// 				background-color: rgba($gray-65, 0.05);
+// 			}
+// 		}
+// 	}
+// 	.input-checked__square {
+// 		margin-left: 0.2rem;
+// 		box-sizing: border-box;
+// 		position: relative;
+// 	}
+// 	.input-checked__square label {
+// 		cursor: pointer;
+// 		@include flex($align-items: center);
+// 		height: $input-check-size;
+// 		margin-left: 0.2rem;
+// 		text-indent: $input-check-size;
+// 	}
+// 	.input-checked__square label:after,
+// 	.input-checked__square label:before {
+// 		content: '';
+// 		width: $input-check-size;
+// 		height: $input-check-size;
+// 		display: block;
+// 		box-sizing: border-box;
+// 		border-radius: 0.2rem;
+// 		z-index: 0;
+// 		position: absolute;
+// 		// top: 0;
+// 		left: 0;
+// 		background-color: transparent;
+// 	}
+// 	.input-checked__square label:before {
+// 		border: 0.05rem solid rgba($gray-65, 0.3);
+// 	}
+// 	&:hover {
+// 		input:not(:disabled) ~ .input-checked__square label:before {
+// 			@include main-border($highlight);
+// 		}
+// 	}
+// }

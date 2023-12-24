@@ -1,0 +1,77 @@
+// ACCOUNT PERSONAL INFO
+.account-info {
+	@include flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: space-around, $align-items: center, $text-align: center);
+	min-height: $accountPersonalInfoHeight;
+	color: $mainFontColorLight;
+	.svg-icon {
+		color: $mainFontColorLight;
+		cursor: pointer;
+		&:hover {
+			color: $purple-1;
+		}
+	}
+}
+.account-name {
+	font-family: $headerFont;
+	font-size: 1.4rem;
+	margin-bottom: 0.2rem;
+	word-wrap: break-word;
+}
+
+// ACCOUNT MAIN CONTAINER
+.account-container {
+	width: $accountMainContainerWidth;
+	margin: 1rem auto;
+	.svg-icon {
+		cursor: pointer;
+		&:hover {
+			color: $purple-40;
+		}
+	}
+}
+.account-empty-list {
+	@include flex($flex-direction: row, $flex-wrap: nowrap, $justify-content: center, $align-items: center, $text-align: center);
+	color: rgba($gray-65, 0.6);
+	margin-top: 1rem;
+	p {
+		text-transform: uppercase;
+		font-weight: bold;
+		&:hover {
+			@include main-transition($duration: 0.2s);
+			+ .svg-icon {
+				@include main-transition($duration: 0.2s);
+				transform: translateX(0.1rem);
+			}
+		}
+	}
+	.svg-icon {
+		width: 1.3rem;
+		margin-left: 0.5rem;
+		cursor: default;
+		color: rgba($gray-65, 0.6);
+		&:hover {
+			color: rgba($gray-65, 0.6);
+		}
+	}
+}
+
+// ADD CODE FIELD
+.code-bordered-input {
+	margin: 0 0 0 auto;
+	width: 20%;
+	@include max-screen($tabletWidth) {
+		width: 30%;
+	}
+	@include max-screen($phoneWidth) {
+		width: 40%;
+	}
+}
+
+// PRICE LIST SEARCH BAR
+.price-list-search-bar {
+	@include flex($justify-content: space-around, $align-items: flex-start, $text-align: center);
+	.svg-icon {
+		width: 1.5rem;
+		margin-top: 0.3rem;
+	}
+}

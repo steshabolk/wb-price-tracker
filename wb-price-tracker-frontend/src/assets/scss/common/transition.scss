@@ -1,0 +1,120 @@
+@keyframes opacityFromZero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes opacityFromZero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-moz-keyframes opacityFromZero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-o-keyframes opacityFromZero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-ms-keyframes opacityFromZero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+// FADE X
+.fade-X-enter-active {
+	animation: opacityFromZero 0.5s ease;
+	-webkit-animation: opacityFromZero 0.5s ease;
+	-moz-animation: opacityFromZero 0.5s ease;
+	-o-animation: opacityFromZero 0.5s ease;
+	-ms-animation: opacityFromZero 0.5s ease;
+}
+.fade-X-leave-active {
+	opacity: 0;
+}
+.fade-X-enter-from,
+.fade-X-leave-to {
+	opacity: 0;
+	height: 0;
+}
+
+// FADE Y
+.fade-Y-enter-active {
+	animation: opacityFromZero 0.5s ease;
+	-webkit-animation: opacityFromZero 0.5s ease;
+	-moz-animation: opacityFromZero 0.5s ease;
+	-o-animation: opacityFromZero 0.5s ease;
+	-ms-animation: opacityFromZero 0.5s ease;
+}
+.fade-Y-leave-active {
+	opacity: 0;
+	display: none;
+}
+.fade-Y-enter-from,
+.fade-Y-leave-to {
+	opacity: 0;
+	height: 0;
+	display: none;
+}
+
+// FADE
+.fade-slot-enter-active,
+.fade-slot-leave-active {
+	animation: opacityFromZero 0.5s ease;
+	-webkit-animation: opacityFromZero 0.5s ease;
+	-moz-animation: opacityFromZero 0.5s ease;
+	-o-animation: opacityFromZero 0.5s ease;
+	-ms-animation: opacityFromZero 0.5s ease;
+}
+.fade-slot-leave-active {
+	position: absolute;
+}
+.fade-slot-enter-from {
+	opacity: 0;
+}
+.fade-slot-leave-to {
+	opacity: 0;
+	transform: scaleY(0);
+}
+
+// LIST
+.list-enter-active,
+.list-leave-active,
+.list-move {
+	transition: 0.3s cubic-bezier(0.59, 0.12, 0.34, 0.95);
+	transition-property: opacity, transform;
+}
+.list-leave-active {
+	position: absolute;
+}
+.list-enter-from {
+	opacity: 0;
+	transform: translateX(0) scaleY(0.5);
+}
+.list-enter-to {
+	opacity: 1;
+	transform: translateX(0) scaleY(1);
+}
+.list-leave-to {
+	opacity: 0;
+	transform: scaleY(0);
+	transform-origin: top center;
+}

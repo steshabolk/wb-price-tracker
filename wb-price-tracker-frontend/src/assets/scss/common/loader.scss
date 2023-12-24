@@ -1,0 +1,110 @@
+// LINE
+.loader-line {
+	@include flex($align-items: center, $text-align: center);
+	margin: 0 auto;
+	height: 0.25rem;
+	width: 6rem;
+	border-radius: 1rem;
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: $gray-8;
+	}
+	&::after {
+		content: '';
+		height: 100%;
+		width: 100%;
+		border-radius: 1rem;
+		transform: translateX(-100%);
+		background-color: $gray-80;
+		animation: loader-line 1.4s ease-in-out infinite;
+		-webkit-animation: loader-line 1.4s ease-in-out infinite;
+		-moz-animation: loader-line 1.4s ease-in-out infinite;
+		-o-animation: loader-line 1.4s ease-in-out infinite;
+		-ms-animation: loader-line 1.4s ease-in-out infinite;
+	}
+}
+@keyframes loader-line {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+@-webkit-keyframes loader-line {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+@-moz-keyframes loader-line {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+@-o-keyframes loader-line {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+@-ms-keyframes loader-line {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.preload {
+	// width: 100%;
+	// height: calc(100vh - $headerHeight - $footerHeight);
+	background: linear-gradient(100deg, $gray-5 40%, $gray-2 50%, $gray-5 60%);
+	background-size: 200% 100%;
+	background-position-x: 180%;
+	animation: preloadAnimation 1.2s linear infinite;
+	-webkit-animation: preloadAnimation 1.2s linear infinite;
+	-moz-animation: preloadAnimation 1.2s linear infinite;
+	-o-animation: preloadAnimation 1.2s linear infinite;
+	-ms-animation: preloadAnimation 1.2s linear infinite;
+}
+@keyframes preloadAnimation {
+	to {
+		background-position-x: -20%;
+	}
+}
+@-webkit-keyframes preloadAnimation {
+	to {
+		background-position-x: -20%;
+	}
+}
+@-moz-keyframes preloadAnimation {
+	to {
+		background-position-x: -20%;
+	}
+}
+@-o-keyframes preloadAnimation {
+	to {
+		background-position-x: -20%;
+	}
+}
+@-ms-keyframes preloadAnimation {
+	to {
+		background-position-x: -20%;
+	}
+}
